@@ -1,0 +1,10 @@
+<plugin name='plugin-bootstrap' version='0.1' grailsVersion='2.3 &gt; *'>
+  <author>JHasselgren</author>
+  <authorEmail>joakim.hasselgren@gmail.com</authorEmail>
+  <title>Plugin Bootstrap Plugin</title>
+  <description>Brief summary/description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/plugin-bootstrap</documentation>
+  <type>PluginBootstrapGrailsPlugin</type>
+  <resources />
+</plugin>
