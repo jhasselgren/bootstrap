@@ -1,16 +1,12 @@
 class PluginBootstrapGrailsPlugin {
     // the plugin version
-    def version = "0.0.1"
+    def version = "0.1"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.3 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
     ]
-
-	def dependsOn = [scaffolding: "2.0.1 > *"]
-	
-	def loadAfter = ['scaffolding']
 
     // TODO Fill in these fields
     def title = "Plugin Bootstrap Plugin" // Headline display name of the plugin

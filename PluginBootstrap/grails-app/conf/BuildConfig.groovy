@@ -37,6 +37,8 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         // runtime 'mysql:mysql-connector-java:5.1.24'
+		
+		
     }
 
     plugins {
@@ -46,5 +48,7 @@ grails.project.dependency.resolution = {
 	        }
 			// plugins for the build system only
 			build ":tomcat:7.0.47"
+			
+			compile ":scaffolding:2.0.1"
     }
 }
