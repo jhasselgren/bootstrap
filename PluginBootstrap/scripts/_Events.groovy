@@ -38,18 +38,23 @@ eventPluginInstalled = { String pluginName ->
 		if(pluginName.toLowerCase().contains("plugin-bootstrap")){
 			println "Installing plugin-bootstrap"
 			
+			String viewsDir = "$basedir/grails-app/views"
 			String templatesDir = "$basedir/src/templates"
 			
 			println "templatesDir = $templatesDir"
 			copyTemplates templatesDir, true
+			
+			copyViews(viewsDir, true)
 		}
 }
 
 eventInstallTemplates = { boolean overwrite ->
 
+	String viewsDir = "$basedir/grails-app/views"
 	String templatesDir = "$basedir/src/templates"
 
 	copyTemplates templatesDir, overwrite
+	copyViews(viewsDir, overwrite)
 	/*
 	ant.mkdir(dir: "$templatesDir/artifacts")
 	ant.copy(todir: "$templatesDir/artifacts", verbose: true) {
@@ -59,12 +64,38 @@ eventInstallTemplates = { boolean overwrite ->
 }
 
 void copyTemplates(String templatesDir, boolean overwrite) {
-	println "creates dir $templatesDir/scaffolding"
+	/*println "creates dir $templatesDir/scaffolding"
 	ant.mkdir(dir: "$templatesDir/scaffolding")
 	
 	println "copy dir $pluginBootstrapPluginDir/src/templates/scaffolding"
 	
 	ant.copy(todir: "$templatesDir/scaffolding", verbose: true, overwrite: overwrite) {
 		fileset(dir: "$pluginBootstrapPluginDir/src/templates/scaffolding")
+	}*/
+	
+	String sourceDir = "$pluginBootstrapPluginDir/src/templates/scaffolding"
+	String targetDir = "$templatesDir/scaffolding"
+	
+	copyDir sourceDir, targetDir, overwrite
+	
+}
+
+void copyViews(String viewDir, boolean overwrite){
+	
+	String sourceDir = "$pluginBootstrapPluginDir/grails-app/views"
+	String targetDir = "$viewDir"
+	
+	copyDir sourceDir, targetDir, overwrite
+}
+
+void copyDir(String sourceDir, String targetDir, boolean overwrite){
+	println "creates dir $targetDir"
+	ant.mkdir(dir: targetDir)
+	
+	println "copy dir $sourceDir"
+	
+	ant.copy(todir: targetDir, verbose: true, overwrite: overwrite){
+		fileset(dir: sourceDir)
 	}
 }
+
